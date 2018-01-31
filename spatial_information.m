@@ -1,6 +1,7 @@
 function [fr, occup, spatial_metrics] = spatial_information(x,x_srate, spk, trials, varargin)
 % SPATIAL_INFORMATION computes the spatial information metrics as described
 % in Souza et al. 2018, On information metrics for spatial coding.
+% Neuroscience (in press).
 %
 %
 % [FR, occup, spatial_metrics] = spatial_information(X,X_SRATE,SPK,TRIALS) 
@@ -23,8 +24,10 @@ function [fr, occup, spatial_metrics] = spatial_information(x,x_srate, spk, tria
 %        [fr, occup, sm] = spatial_information(x,x_srate,spk,trials);
 %        subplot(2,2,1)
 %        imagesc(squeeze(fr(:,:,1)))
+%        xlabel('Space bins'); ylabel('Trials'); title('Firing rate of neuron 1')
 %        subplot(2,2,2)
 %        imagesc(occup)
+%        xlabel('Space bins'); ylabel('Trials'); title('Animal occupancy')
 %        subplot(2,2,3)
 %        bar([sm.MI;  sm.Isec;  sm.Ispike;]')
 %        xlabel('Neuron')
