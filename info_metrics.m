@@ -30,8 +30,9 @@ if isempty(stimulus)
     spatial_bin=1:size(FR,2);
     stimulus=repmat(spatial_bin,size(FR,1),1);
 end
-FRtemp=FR(:); FRtemp=FRtemp(~isnan(FRtemp));
-stimulus=stimulus(:); stimulus=stimulus(~isnan(FRtemp));
+FRtemp=FR(:); 
+FRtemp=FRtemp(~isnan(FRtemp));
+stimulus=stimulus(:); stimulus=stimulus(~isnan(FR(:)));
 
 %if nshuffles~=0, disp('SHANNON''s Mutual Information...'); end
 FRbin=NaN(size(FRtemp));
@@ -67,7 +68,7 @@ if nshuffles>0
     output.SkaggsSec_shuffle   = NaN(1,nshuffles);
     output.SkaggsSpike_shuffle = NaN(1,nshuffles);
     for s=1:nshuffles
-        shuffleoutput = info_metrics( shuffle(FR(:)), stimulus, nbinFRSH, occupSK, 0); %recursive
+        shuffleoutput = info_metrics( shuffle(FRtemp), stimulus, nbinFRSH, occupSK, 0); %recursive
         output.ShannonMI_shuffle(s)   = shuffleoutput.ShannonMI;
         output.SkaggsSec_shuffle(s)   = shuffleoutput.SkaggsSec;
         output.SkaggsSpike_shuffle(s) = shuffleoutput.SkaggsSpike;
